@@ -23,12 +23,6 @@ A custom, fully responsive, and bilingual portfolio website built for a professi
 - **Routing:** Angular Router
 - **Deployment:** Netlify (CI/CD via GitHub)
 
-## 🏃‍♂️ How to Run Locally
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/gia-tattoo.git
-
 ## Development server
 
 To start a local development server, run:
