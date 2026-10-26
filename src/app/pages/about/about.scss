@@ -1,0 +1,137 @@
+@use '../../../theme' as *;
+
+.about-page {
+  padding-top: $space-xl;
+  padding-bottom: $space-xl;
+  min-height: calc(100vh - 80px);
+}
+
+/* --- Top Hero Section --- */
+.about-hero {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: $space-xl;
+  align-items: center;
+  margin-bottom: $space-xl;
+}
+
+.about-image {
+  position: relative;
+  
+  img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: $radius;
+    border: 1px solid $color-border;
+    /* A subtle red glow behind the image */
+    box-shadow: -15px 15px 0px -5px rgba($color-red, 0.15); 
+  }
+}
+
+.about-text {
+  h1 {
+    color: $color-text;
+    margin-bottom: $space-md;
+  }
+
+  p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: $color-text-muted;
+    margin-bottom: $space-sm;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: $color-text;
+    font-style: italic;
+  }
+}
+
+/* --- Philosophy Section --- */
+.about-philosophy {
+  border-top: 1px solid $color-border;
+  padding-top: $space-xl;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: $space-lg;
+  
+  &::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: $color-red;
+    margin: $space-sm auto 0;
+  }
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: $space-lg; 
+  
+  /* Add these three lines to center it */
+  max-width: 800px; 
+  margin: 0 auto;   
+  justify-content: center; 
+}
+
+.value-card {
+  background: $color-black-soft;
+  padding: $space-lg $space-md;
+  border-radius: $radius;
+  border: 1px solid $color-border;
+  text-align: center;
+  transition: transform $transition, border-color $transition;
+
+  &:hover {
+    border-color: $color-purple;
+    transform: translateY(-5px);
+  }
+
+  .value-icon {
+    color: $color-red;
+    font-size: 2rem;
+    margin-bottom: $space-sm;
+  }
+
+  h3 {
+    color: $color-text;
+    font-family: $font-body;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: $space-xs;
+  }
+
+  p {
+    color: $color-text-muted;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 900px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+    gap: $space-lg;
+  }
+
+  .about-image {
+    max-width: 500px;
+    margin: 0 auto;
+    
+    img {
+      box-shadow: 0 10px 30px rgba($color-red, 0.1); /* Simplify shadow for mobile */
+    }
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr; /* Stack vertically on mobile */
+  }
+}

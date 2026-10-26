@@ -1,1 +1,76 @@
-/* You can add global styles to this file, and also import other style files */
+// ============================================
+//  GLOBAL STYLES
+// ============================================
+@use './theme' as *;
+
+// Import fonts from Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+// ---- Reset-ish ----
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  background: $color-black;
+  color: $color-text;
+  font-family: $font-body;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ---- Typography defaults ----
+h1, h2, h3, h4 {
+  font-family: $font-display;
+  font-weight: 700;
+  color: $color-text;
+  margin: 0 0 $space-sm 0;
+  letter-spacing: 0.02em;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+h3 { font-size: 1.25rem; }
+
+p {
+  margin: 0 0 $space-sm 0;
+  color: $color-text-muted;
+}
+
+a {
+  color: $color-red;
+  text-decoration: none;
+  transition: color $transition;
+
+  &:hover {
+    color: $color-red-bright;
+  }
+}
+
+// ---- Utility ----
+.container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 $space-sm;
+}
+
+// ---- Custom scrollbar (nice touch on dark sites) ----
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: $color-black; }
+::-webkit-scrollbar-thumb {
+  background: $color-purple;
+  border-radius: 5px;
+
+  &:hover { background: $color-red; }
+}

@@ -1,0 +1,36 @@
+// ============================================
+//  GIA TATTOO — Theme
+//  Central place for colors, fonts, spacing.
+//  Change values here and they update everywhere.
+// ============================================
+
+// ---- Colors ----
+$color-black:        #0a0a0a;   // main background
+$color-black-soft:   #121212;   // cards, surfaces
+$color-black-elev:   #1a1a1a;   // hover states
+
+$color-red:          #d90429;   // primary accent
+$color-red-bright:   #ef233c;   // hover / highlights
+
+$color-purple:       #6a4c93;   // secondary accent
+$color-purple-soft:  #4a3568;   // subtle purple
+
+$color-text:         #f5f5f5;   // primary text
+$color-text-muted:   #a0a0a0;   // secondary text
+$color-border:       #262626;   // subtle borders
+
+// ---- Fonts ----
+$font-display: 'Cinzel', serif;              // headings — classy, dark vibe
+$font-body:    'Inter', system-ui, sans-serif; // body text
+
+// ---- Spacing scale ----
+$space-xs: 0.5rem;    //  8px
+$space-sm: 1rem;      // 16px
+$space-md: 2rem;      // 32px
+$space-lg: 4rem;      // 64px
+$space-xl: 6rem;      // 96px
+
+// ---- Misc ----
+$radius:        8px;
+$transition:    0.25s ease;
+$max-width:     1200px;

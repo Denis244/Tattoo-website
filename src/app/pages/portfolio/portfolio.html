@@ -1,0 +1,52 @@
+<section class="portfolio-page container">
+  
+  <!-- Header -->
+  <div class="page-header">
+    <h1>{{ langService.t().portfolio_title }}</h1>
+    <p>{{ langService.t().portfolio_subtitle }}</p>
+  </div>
+
+  <!-- Filter Buttons -->
+  <div class="filters">
+    <button 
+      [class.active]="currentFilter() === 'all'" 
+      (click)="setFilter('all')">
+      {{ langService.t().filter_all }}
+    </button>
+    
+    <button 
+      [class.active]="currentFilter() === 'blackwork'" 
+      (click)="setFilter('blackwork')">
+      {{ langService.t().filter_blackwork }}
+    </button>
+    
+    <button 
+      [class.active]="currentFilter() === 'fineline'" 
+      (click)="setFilter('fineline')">
+      {{ langService.t().filter_fineline }}
+    </button>
+    
+    <button 
+      [class.active]="currentFilter() === 'color'" 
+      (click)="setFilter('color')">
+      {{ langService.t().filter_color }}
+    </button>
+  </div>
+
+  <!-- The Grid -->
+  <div class="portfolio-grid">
+    <!-- Angular's new @for loop -->
+    @for (tattoo of filteredTattoos(); track tattoo.id) {
+      <div class="tattoo-card">
+        <img [src]="tattoo.imageUrl" [alt]="tattoo.title">
+        <div class="overlay">
+          <h3>{{ tattoo.title }}</h3>
+          <span class="category">{{ tattoo.category }}</span>
+        </div>
+      </div>
+    } @empty {
+      <p class="no-results">No tattoos found for this category.</p>
+    }
+  </div>
+
+</section>

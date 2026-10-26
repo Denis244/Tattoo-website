@@ -1,0 +1,90 @@
+<section class="faq-page container">
+  
+  <div class="page-header">
+    <h1>{{ langService.t().faq_title }}</h1>
+    <p>{{ langService.t().faq_subtitle }}</p>
+  </div>
+
+  <div class="faq-list">
+    
+    <!-- Question 1 -->
+    <div class="faq-item" [class.active]="openFaqIndex() === 0">
+      <button class="faq-question" (click)="toggleFaq(0)">
+        <span>{{ langService.t().faq_q1 }}</span>
+        <span class="icon">+</span>
+      </button>
+      @if (openFaqIndex() === 0) {
+        <div class="faq-answer">
+          <p>{{ langService.t().faq_a1 }}</p>
+        </div>
+      }
+    </div>
+
+    <!-- Question 2 -->
+    <div class="faq-item" [class.active]="openFaqIndex() === 1">
+      <button class="faq-question" (click)="toggleFaq(1)">
+        <span>{{ langService.t().faq_q2 }}</span>
+        <span class="icon">+</span>
+      </button>
+      @if (openFaqIndex() === 1) {
+        <div class="faq-answer">
+          <p>{{ langService.t().faq_a2 }}</p>
+        </div>
+      }
+    </div>
+
+    <!-- Question 3 -->
+    <div class="faq-item" [class.active]="openFaqIndex() === 2">
+      <button class="faq-question" (click)="toggleFaq(2)">
+        <span>{{ langService.t().faq_q3 }}</span>
+        <span class="icon">+</span>
+      </button>
+      @if (openFaqIndex() === 2) {
+        <div class="faq-answer">
+          <p>{{ langService.t().faq_a3 }}</p>
+        </div>
+      }
+    </div>
+
+    <!-- Question 4 -->
+    <div class="faq-item" [class.active]="openFaqIndex() === 3">
+      <button class="faq-question" (click)="toggleFaq(3)">
+        <span>{{ langService.t().faq_q4 }}</span>
+        <span class="icon">+</span>
+      </button>
+      @if (openFaqIndex() === 3) {
+        <div class="faq-answer">
+          <p>{{ langService.t().faq_a4 }}</p>
+        </div>
+      }
+    </div>
+
+    <!-- Question 5 -->
+    <div class="faq-item" [class.active]="openFaqIndex() === 4">
+      <button class="faq-question" (click)="toggleFaq(4)">
+        <span>{{ langService.t().faq_q5 }}</span>
+        <span class="icon">+</span>
+      </button>
+      @if (openFaqIndex() === 4) {
+        <div class="faq-answer">
+          <p>{{ langService.t().faq_a5 }}</p>
+        </div>
+      }
+    </div>
+
+    <!-- Question 6 -->
+    <div class="faq-item" [class.active]="openFaqIndex() === 5">
+      <button class="faq-question" (click)="toggleFaq(5)">
+        <span>{{ langService.t().faq_q6 }}</span>
+        <span class="icon">+</span>
+      </button>
+      @if (openFaqIndex() === 5) {
+        <div class="faq-answer">
+          <p>{{ langService.t().faq_a6 }}</p>
+        </div>
+      }
+    </div>
+
+  </div>
+
+</section>

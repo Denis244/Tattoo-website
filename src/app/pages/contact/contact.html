@@ -1,0 +1,49 @@
+<section class="contact-page container">
+  
+  <div class="page-header">
+    <h1>{{ langService.t().contact_title }}</h1>
+    <p>{{ langService.t().contact_subtitle }}</p>
+  </div>
+
+  <!-- The Big Instagram Button -->
+  <div class="cta-container">
+    <a href="https://www.instagram.com/gia._.tattoo/" target="_blank" rel="noopener" class="instagram-btn">
+      <!-- Simple SVG for Instagram icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+      </svg>
+      {{ langService.t().btn_instagram }}
+    </a>
+  </div>
+
+  <!-- Info Grid -->
+  <div class="info-grid">
+    
+    <!-- How to book -->
+    <div class="info-card">
+      <h3>{{ langService.t().booking_title }}</h3>
+      <ul class="steps">
+        <li>{{ langService.t().booking_step_1 }}</li>
+        <li>{{ langService.t().booking_step_2 }}</li>
+        <li>{{ langService.t().booking_step_3 }}</li>
+      </ul>
+    </div>
+
+    <!-- Location & Hours -->
+    <div class="info-card">
+      <div class="info-group">
+        <h3>{{ langService.t().location_title }}</h3>
+        <p>{{ langService.t().location_text }}</p>
+      </div>
+      
+      <div class="info-group mt-4">
+        <h3>{{ langService.t().hours_title }}</h3>
+        <p style="white-space: pre-line;">{{ langService.t().hours_text }}</p>
+      </div>
+    </div>
+
+  </div>
+
+</section>

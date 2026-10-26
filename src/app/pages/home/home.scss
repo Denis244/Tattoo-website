@@ -1,0 +1,196 @@
+@use '../../../theme' as *;
+
+// ============================================
+//  1. HERO SECTION
+// ============================================
+.hero {
+  // Full viewport height minus the header
+  min-height: calc(100vh - 80px); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  
+  // A moody gradient background. You can swap this for an actual image later.
+  background: radial-gradient(circle at center, $color-black-elev 0%, $color-black 100%);
+  
+  // Add a subtle purple glow from the bottom
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(to top, rgba($color-purple, 0.15), transparent);
+    pointer-events: none;
+  }
+}
+
+.hero-content {
+  padding: $space-md;
+  max-width: 800px;
+  z-index: 1; // Keep above the glow
+}
+
+.hero-title {
+  font-size: clamp(3rem, 10vw, 6rem);
+  letter-spacing: 0.1em;
+  margin-bottom: $space-xs;
+  color: $color-text;
+  // A slight red glow behind the text
+  text-shadow: 0 0 40px rgba($color-red, 0.3);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: $color-text-muted;
+  margin-bottom: $space-md;
+  font-style: italic;
+}
+
+.hero-actions {
+  display: flex;
+  gap: $space-sm;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+// ============================================
+//  BUTTONS (Reusable)
+// ============================================
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  font-family: $font-body;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  border-radius: $radius;
+  transition: all $transition;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: $color-red;
+  color: $color-black;
+  border: 2px solid $color-red;
+  
+  &:hover {
+    background: $color-red-bright;
+    border-color: $color-red-bright;
+    color: $color-black;
+    transform: translateY(-2px);
+  }
+}
+
+.btn-outline {
+  background: transparent;
+  color: $color-text;
+  border: 2px solid $color-border;
+  
+  &:hover {
+    border-color: $color-purple;
+    color: $color-purple;
+  }
+}
+
+// ============================================
+//  2. INTRO SECTION
+// ============================================
+.intro {
+  padding: $space-xl 0;
+  display: flex;
+  justify-content: center;
+}
+
+.intro-text {
+  max-width: 600px;
+  text-align: center;
+  
+  h2 {
+    color: $color-red;
+    margin-bottom: $space-sm;
+  }
+  
+  p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: $space-md;
+  }
+}
+
+.link-arrow {
+  display: inline-block;
+  color: $color-purple;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  
+  &:hover {
+    color: $color-text;
+    transform: translateX(5px); // Slide right on hover
+  }
+}
+
+// ============================================
+//  3. FEATURED WORK
+// ============================================
+.featured {
+  padding-bottom: $space-xl;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: $space-lg;
+  
+  // Decorative line under the title
+  &::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: $color-red;
+    margin: $space-sm auto 0;
+  }
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $space-md;
+  margin-bottom: $space-lg;
+}
+
+.work-card {
+  aspect-ratio: 1 / 1; // Makes them perfect squares
+  overflow: hidden;
+  border-radius: $radius;
+  border: 1px solid $color-border;
+  position: relative;
+  
+  // Hover effect: border turns red and glows
+  &:hover {
+    border-color: $color-red;
+    box-shadow: 0 0 20px rgba($color-red, 0.2);
+  }
+}
+
+.work-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+  
+  // Zoom image slightly on hover
+  .work-card:hover & {
+    transform: scale(1.05);
+  }
+}
+
+.featured-action {
+  text-align: center;
+}

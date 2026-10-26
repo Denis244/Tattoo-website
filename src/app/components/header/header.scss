@@ -1,0 +1,163 @@
+@use '../../../theme' as *;
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: rgba($color-black, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid $color-border;
+  z-index: 100;
+}
+
+/* Changed to full width with generous padding */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Pushes logo left, nav right */
+  height: 100%;
+  width: 100%;
+  padding: 0 $space-lg; /* Generous padding on the sides */
+}
+
+/* --- Logo --- */
+.logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  text-decoration: none;
+
+  .logo-main {
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: 2rem; /* Increased from 1.5rem */
+    color: $color-text;
+    letter-spacing: 0.15em;
+  }
+
+  .logo-sub {
+    font-family: $font-body;
+    font-weight: 300;
+    font-size: 0.8rem; /* Slightly larger */
+    color: $color-red;
+    letter-spacing: 0.55em; /* Adjusted to match new logo size */
+    margin-top: 2px;
+  }
+}
+
+/* --- Nav & Language Wrapper --- */
+.nav-container {
+  display: flex;
+  align-items: center;
+  gap: $space-lg; /* Bigger gap between nav links and the RO/EN button */
+}
+
+/* --- Nav Links --- */
+.nav {
+  display: flex;
+  gap: $space-md; /* Spacing between links */
+  align-items: center;
+
+  a {
+    color: $color-text-muted;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: color $transition;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: $color-red;
+      transition: width $transition;
+    }
+
+    &:hover {
+      color: $color-text;
+
+      &::after { width: 100%; }
+    }
+
+    &.active {
+      color: $color-red;
+
+      &::after { width: 100%; }
+    }
+  }
+
+  .nav-cta {
+    padding: 0.5rem 1.25rem;
+    border: 1px solid $color-red;
+    border-radius: $radius;
+    color: $color-red;
+
+    &::after { display: none; }
+
+    &:hover {
+      background: $color-red;
+      color: $color-black;
+    }
+
+    &.active {
+      background: $color-red;
+      color: $color-black;
+    }
+  }
+}
+
+/* --- Language Toggle --- */
+.lang-toggle {
+  background: transparent;
+  color: $color-text-muted;
+  border: 1px solid $color-border;
+  padding: 0.4rem 0.8rem;
+  border-radius: $radius;
+  font-family: $font-body;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all $transition;
+
+  &:hover {
+    border-color: $color-purple;
+    color: $color-purple;
+  }
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1100px) {
+  .header-inner {
+    padding: 0 $space-md; /* Less padding on smaller screens */
+  }
+  .logo .logo-main { font-size: 1.5rem; }
+  .nav { gap: $space-sm; }
+  .nav-container { gap: $space-md; }
+}
+
+@media (max-width: 850px) {
+  .header-inner {
+    flex-direction: column; /* Stack logo on top of nav for mobile */
+    height: auto;
+    padding: $space-sm;
+    gap: $space-sm;
+  }
+  
+  .nav-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $space-sm;
+    a { font-size: 0.8rem; }
+  }
+}

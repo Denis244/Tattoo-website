@@ -1,0 +1,36 @@
+<header class="site-header">
+  <!-- Removed 'container' class here -->
+  <div class="header-inner">
+    <a routerLink="/" class="logo">
+      <span class="logo-main">GIA</span>
+      <span class="logo-sub">TATTOO</span>
+    </a>
+
+    <div class="nav-container">
+      <nav class="nav">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          {{ langService.t().nav_home }}
+        </a>
+        <a routerLink="/portfolio" routerLinkActive="active">
+          {{ langService.t().nav_portfolio }}
+        </a>
+        <a routerLink="/about" routerLinkActive="active">
+          {{ langService.t().nav_about }}
+        </a>
+        <a routerLink="/faq" routerLinkActive="active">
+          {{ langService.t().nav_faq }}
+        </a>
+        <a routerLink="/aftercare" routerLinkActive="active">
+          {{ langService.t().nav_aftercare }}
+        </a>
+        <a routerLink="/contact" routerLinkActive="active" class="nav-cta">
+          {{ langService.t().nav_contact }}
+        </a>
+      </nav>
+
+      <button class="lang-toggle" (click)="langService.toggleLanguage()">
+        {{ langService.currentLang() === 'en' ? 'RO' : 'EN' }}
+      </button>
+    </div>
+  </div>
+</header>

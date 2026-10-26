@@ -1,0 +1,92 @@
+@use '../../../theme' as *;
+
+.faq-page {
+  padding-top: $space-lg;
+  padding-bottom: $space-xl;
+  min-height: calc(100vh - 80px);
+  max-width: 800px; /* Constrain width for better readability */
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: $space-xl;
+  
+  h1 { color: $color-text; }
+  p { color: $color-text-muted; }
+}
+
+/* --- Accordion List --- */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+.faq-item {
+  background: $color-black-soft;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  overflow: hidden;
+  transition: border-color $transition;
+
+  &:hover {
+    border-color: rgba($color-red, 0.5);
+  }
+
+  &.active {
+    border-color: $color-red;
+  }
+}
+
+/* --- Question Button --- */
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  border: none;
+  padding: $space-md;
+  color: $color-text;
+  font-family: $font-body;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: color $transition;
+
+  &:hover {
+    color: $color-red;
+  }
+
+  .icon {
+    color: $color-red;
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: transform 0.3s ease;
+    line-height: 1;
+  }
+}
+
+/* Rotate the + into an x when active */
+.faq-item.active .faq-question .icon {
+  transform: rotate(45deg);
+}
+
+/* --- Answer Section --- */
+.faq-answer {
+  padding: 0 $space-md $space-md $space-md;
+  color: $color-text-muted;
+  line-height: 1.7;
+  /* Simple animation for smooth reveal */
+  animation: fadeIn 0.3s ease-in-out;
+
+  p {
+    margin: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

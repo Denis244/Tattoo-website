@@ -1,0 +1,132 @@
+@use '../../../theme' as *;
+
+.portfolio-page {
+  padding-top: $space-lg;
+  padding-bottom: $space-xl;
+  min-height: calc(100vh - 80px);
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: $space-lg;
+  
+  h1 {
+    color: $color-text;
+    margin-bottom: $space-xs;
+  }
+  
+  p {
+    color: $color-text-muted;
+  }
+}
+
+/* --- Filters --- */
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: $space-sm;
+  margin-bottom: $space-lg;
+}
+
+.filters button {
+  background: transparent;
+  color: $color-text-muted;
+  border: 1px solid $color-border;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px; /* Pill shape */
+  font-family: $font-body;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all $transition;
+
+  &:hover {
+    border-color: $color-purple;
+    color: $color-purple;
+  }
+
+  &.active {
+    background: $color-red;
+    border-color: $color-red;
+    color: $color-black;
+  }
+}
+
+/* --- Grid --- */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $space-md;
+}
+
+.tattoo-card {
+  position: relative;
+  aspect-ratio: 4 / 5; /* Vertical rectangle, good for tattoos */
+  overflow: hidden;
+  border-radius: $radius;
+  border: 1px solid $color-border;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  /* Hover Overlay */
+  .overlay {
+    position: absolute;
+    inset: 0; /* Shorthand for top:0; right:0; bottom:0; left:0 */
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: $space-md;
+    opacity: 0;
+    transition: opacity $transition;
+
+    h3 {
+      margin: 0;
+      color: $color-text;
+      transform: translateY(10px);
+      transition: transform $transition;
+    }
+
+    .category {
+      color: $color-red;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+      transform: translateY(10px);
+      transition: transform $transition;
+    }
+  }
+
+  /* Hover states */
+  &:hover {
+    border-color: $color-red;
+    
+    img {
+      transform: scale(1.05);
+    }
+
+    .overlay {
+      opacity: 1;
+
+      h3, .category {
+        transform: translateY(0); /* Slide text up */
+      }
+    }
+  }
+}
+
+.no-results {
+  grid-column: 1 / -1; /* Span full width */
+  text-align: center;
+  color: $color-text-muted;
+  font-style: italic;
+  padding: $space-xl 0;
+}

@@ -1,0 +1,104 @@
+@use '../../../theme' as *;
+
+.contact-page {
+  padding-top: $space-lg;
+  padding-bottom: $space-xl;
+  min-height: calc(100vh - 80px);
+}
+
+.page-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto $space-xl auto;
+  
+  h1 { color: $color-text; margin-bottom: $space-sm; }
+  p { color: $color-text-muted; font-size: 1.1rem; line-height: 1.8; }
+}
+
+/* --- Instagram CTA --- */
+.cta-container {
+  text-align: center;
+  margin-bottom: $space-xl;
+}
+
+.instagram-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-xs;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); /* Instagram colors */
+  color: white;
+  font-family: $font-body;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: transform $transition, box-shadow $transition;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  &:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(220, 39, 67, 0.3); /* Glow matching the gradient */
+  }
+}
+
+/* --- Info Grid --- */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $space-lg;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.info-card {
+  background: $color-black-soft;
+  padding: $space-md;
+  border-radius: $radius;
+  border: 1px solid $color-border;
+
+  h3 {
+    color: $color-red;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    margin-bottom: $space-sm;
+  }
+
+  p {
+    color: $color-text-muted;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      color: $color-text-muted;
+      margin-bottom: $space-xs;
+      line-height: 1.5;
+      
+      /* Add a subtle purple line to the left of the steps */
+      padding-left: $space-sm;
+      border-left: 2px solid $color-purple;
+    }
+  }
+
+  .mt-4 {
+    margin-top: $space-md;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: $space-md;
+  }
+}

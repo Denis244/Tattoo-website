@@ -1,0 +1,59 @@
+@use '../../../theme' as *;
+
+.site-footer {
+  background: $color-black-soft;
+  border-top: 1px solid $color-border;
+  padding: $space-md 0;
+  margin-top: $space-lg;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: $space-sm;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .brand-main {
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 0.2em;
+    color: $color-text;
+  }
+
+  .brand-sub {
+    font-size: 0.8rem;
+    color: $color-text-muted;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $space-md;
+
+  a {
+    color: $color-text-muted;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+
+    &:hover { color: $color-red; }
+  }
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: $color-text-muted;
+  margin-top: $space-sm;
+}
