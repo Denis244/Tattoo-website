@@ -2,6 +2,33 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.2.
 
+# Gia Tattoo — Artist Portfolio Website
+
+A custom, fully responsive, and bilingual portfolio website built for a professional tattoo artist. This project focuses on a dark, moody aesthetic with red and purple accents, providing a sleek user experience for showcasing tattoo art and managing client inquiries.
+
+## 🚀 Features
+
+- **Modern Angular Architecture:** Built using Angular 20+ with Standalone Components, Signals, and the new Control Flow syntax (`@if`, `@for`).
+- **Bilingual Support (EN/RO):** A custom, lightweight translation service using Angular Signals to instantly switch between English and Romanian without third-party libraries.
+- **Dynamic Portfolio Filtering:** Reactive sorting of portfolio images by category (Blackwork, Fine Line, Color) using computed signals.
+- **Interactive UI Elements:** Custom FAQ accordion, tabbed aftercare guides, and hover animations.
+- **Responsive Design:** Fully mobile-friendly layout built with SCSS variables, CSS Grid, and Flexbox.
+- **Custom SCSS Theme:** Centralized theme file for managing colors, typography, and spacing across the entire app.
+
+## 🛠️ Tech Stack
+
+- **Framework:** Angular 20
+- **Language:** TypeScript
+- **Styling:** SCSS (Sass)
+- **Routing:** Angular Router
+- **Deployment:** Netlify (CI/CD via GitHub)
+
+## 🏃‍♂️ How to Run Locally
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/gia-tattoo.git
+
 ## Development server
 
 To start a local development server, run:
