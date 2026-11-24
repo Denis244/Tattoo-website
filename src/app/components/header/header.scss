@@ -9,17 +9,17 @@
   background: rgba($color-black, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid $color-border;
-  z-index: 100;
+  z-index: 1000;
 }
 
-/* Changed to full width with generous padding */
 .header-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Pushes logo left, nav right */
+  justify-content: space-between;
   height: 100%;
   width: 100%;
-  padding: 0 $space-lg; /* Generous padding on the sides */
+  padding: 0 $space-lg;
+  position: relative;
 }
 
 /* --- Logo --- */
@@ -28,11 +28,13 @@
   flex-direction: column;
   line-height: 1;
   text-decoration: none;
+ // z-index: 1001;
+  transition: opacity 0.3s ease;
 
   .logo-main {
     font-family: $font-display;
     font-weight: 700;
-    font-size: 2rem; /* Increased from 1.5rem */
+    font-size: 2rem;
     color: $color-text;
     letter-spacing: 0.15em;
   }
@@ -40,24 +42,52 @@
   .logo-sub {
     font-family: $font-body;
     font-weight: 300;
-    font-size: 0.8rem; /* Slightly larger */
+    font-size: 0.8rem;
     color: $color-red;
-    letter-spacing: 0.55em; /* Adjusted to match new logo size */
+    letter-spacing: 0.55em;
     margin-top: 2px;
+  }
+
+  .hidden-logo {
+    display: none !important; 
   }
 }
 
-/* --- Nav & Language Wrapper --- */
+/* --- Hamburger --- */
+.hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  color: $color-red;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 0;
+}
+
+/* --- Close Menu Button (Red X) --- */
+.close-menu {
+  display: none;
+  background: transparent;
+  border: none;
+  color: $color-red;
+  cursor: pointer;
+  margin-top: $space-md;
+  padding: 0;
+  
+  &:hover { color: $color-red-bright; }
+}
+
+/* --- Nav Container (Desktop view) --- */
 .nav-container {
   display: flex;
   align-items: center;
-  gap: $space-lg; /* Bigger gap between nav links and the RO/EN button */
+  gap: $space-lg;
 }
 
 /* --- Nav Links --- */
 .nav {
   display: flex;
-  gap: $space-md; /* Spacing between links */
+  gap: $space-md;
   align-items: center;
 
   a {
@@ -82,13 +112,11 @@
 
     &:hover {
       color: $color-text;
-
       &::after { width: 100%; }
     }
 
     &.active {
       color: $color-red;
-
       &::after { width: 100%; }
     }
   }
@@ -101,12 +129,7 @@
 
     &::after { display: none; }
 
-    &:hover {
-      background: $color-red;
-      color: $color-black;
-    }
-
-    &.active {
+    &:hover, &.active {
       background: $color-red;
       color: $color-black;
     }
@@ -131,33 +154,79 @@
   }
 }
 
-/* --- Responsive Adjustments --- */
-@media (max-width: 1100px) {
+/* ========================================= */
+/* 📱 MOBILE MENU                            */
+/* ========================================= */
+@media (max-width: 950px) {
   .header-inner {
-    padding: 0 $space-md; /* Less padding on smaller screens */
+    padding: 0 $space-md;
+    flex-direction: row-reverse; 
   }
-  .logo .logo-main { font-size: 1.5rem; }
-  .nav { gap: $space-sm; }
-  .nav-container { gap: $space-md; }
-}
 
-@media (max-width: 850px) {
-  .header-inner {
-    flex-direction: column; /* Stack logo on top of nav for mobile */
-    height: auto;
-    padding: $space-sm;
-    gap: $space-sm;
-  }
-  
+  .hamburger { display: block; }
+  .close-menu { display: block; } /* Shows the red X */
+
+  /* The Sliding Panel */
   .nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    /* Only 65% of the screen */
+    width: 65%; 
+    min-width: 280px;
+    height: 100vh;
+    
+    /* Solid Dark Grey/Purple base */
+    background: $color-black-soft;
+    
+    /* Fade effect on the right edge */
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.8);
+    border-right: 1px solid $color-purple;
+    
+    display: flex;
     flex-direction: column;
-    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    padding: $space-xl $space-lg;
+
+    /* Hide off-screen */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* When opened */
+    &.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+      
+      /* Optional: Adds a subtle purple gradient fade */
+      background: linear-gradient(90deg, $color-black-soft 80%, rgba($color-black-soft, 0) 100%);
+    }
   }
 
+  /* Stack links vertically */
   .nav {
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
     gap: $space-sm;
-    a { font-size: 0.8rem; }
+    width: 100%;
+    margin-bottom: $space-lg;
+
+    a {
+      font-size: 1.4rem;
+      color: $color-text;
+      width: 100%;
+      padding: $space-xs 0;
+      
+      &:hover { color: $color-red; }
+    }
+  }
+
+  .lang-toggle {
+    margin-top: $space-sm;
+    align-self: flex-start;
   }
 }

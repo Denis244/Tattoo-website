@@ -1,36 +1,62 @@
 <header class="site-header">
-  <!-- Removed 'container' class here -->
   <div class="header-inner">
-    <a routerLink="/" class="logo">
+    
+    <!-- Hamburger Button (Left side) -->
+    <button class="hamburger" (click)="toggleMenu()" aria-label="Toggle menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+
+    <!-- Logo (Middle) - Now hides when menu is open -->
+    <a routerLink="/" class="logo" [class.hidden-logo]="isMenuOpen()" (click)="closeMenu()">
       <span class="logo-main">GIA</span>
       <span class="logo-sub">TATTOO</span>
     </a>
 
-    <div class="nav-container">
+    <!-- Navigation Container -->
+    <div class="nav-container" [class.open]="isMenuOpen()">
+      
       <nav class="nav">
-        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">
           {{ langService.t().nav_home }}
         </a>
-        <a routerLink="/portfolio" routerLinkActive="active">
+        <a routerLink="/portfolio" routerLinkActive="active" (click)="closeMenu()">
           {{ langService.t().nav_portfolio }}
         </a>
-        <a routerLink="/about" routerLinkActive="active">
+        <a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">
           {{ langService.t().nav_about }}
         </a>
-        <a routerLink="/faq" routerLinkActive="active">
+        <a routerLink="/faq" routerLinkActive="active" (click)="closeMenu()">
           {{ langService.t().nav_faq }}
         </a>
-        <a routerLink="/aftercare" routerLinkActive="active">
+        <a routerLink="/aftercare" routerLinkActive="active" (click)="closeMenu()">
           {{ langService.t().nav_aftercare }}
         </a>
-        <a routerLink="/contact" routerLinkActive="active" class="nav-cta">
+        <a routerLink="/contact" routerLinkActive="active" class="nav-cta" (click)="closeMenu()">
           {{ langService.t().nav_contact }}
         </a>
       </nav>
 
-      <button class="lang-toggle" (click)="langService.toggleLanguage()">
-        {{ langService.currentLang() === 'en' ? 'RO' : 'EN' }}
-      </button>
+      <!-- Bottom Actions Wrapper -->
+      <div class="menu-bottom">
+        <!-- Language Toggle (Now First) -->
+        <button class="lang-toggle" (click)="langService.toggleLanguage(); closeMenu()">
+          {{ langService.currentLang() === 'en' ? 'RO' : 'EN' }}
+        </button>
+
+        <!-- Close Button (Now Second) -->
+        <button class="close-menu" (click)="closeMenu()" aria-label="Close menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
     </div>
+
   </div>
 </header>
